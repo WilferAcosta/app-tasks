@@ -8,7 +8,7 @@ router.get('/add',(req,res)=>{
 });
 
 router.post('/add',(res,req)=>{
-  res.reder('received');
+  res.render('received');
 })
 
 module.exports= router;
