@@ -19,32 +19,6 @@ app.engine('.hbs', exphbs.engine({
 }));
 app.set('view engine','.hbs');
 
-
-
-
-
-
-
-/* app.engine('.hbs', exphbs.engine({
-    defaultLayout: 'main',
-    layoutsDir: path.join(app.get('views'), 'layouts'),
-    partialsDir: path.join(app.get('views'), 'partials'),
-    extname: '.hbs',
-    helpers: require('./lib/handlebars')
-}));
-
-app.set('view engine', '.hbs'); */
-
-  
-  
-
-
-
-
-
-
-
-
 //middlewares
 app.use(morgan('dev'));
 app.use(express.urlencoded({extended: false}));
