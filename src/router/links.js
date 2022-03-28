@@ -8,13 +8,14 @@ router.get('/add', (req, res) => {
 });
 
 router.post('/add', async (req, res) => {
-  const {title, url, description} = req.body;
+  const { title, url, description} = req.body;
   const newLink = {
     title,
     url,
     description
   };
   await pool.query('INSERT INTO links set ?', [newLink]);
+  res.flash('success', 'Link saved successfully');
   res.redirect('/links');
 });
 // LAS LISTAS ACA
@@ -45,9 +46,10 @@ router.post('/edit/:id', async (req,res)=>{
   };
   console.log(newLink);
   await pool.query('UPDATE links set ? WHERE id = ?',[newLink,id]);
+  req.flash('success','link saved successfully');
   res.redirect('/links');
 
-})
+});
 
 
 module.exports = router;
