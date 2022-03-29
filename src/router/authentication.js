@@ -6,22 +6,23 @@ router.get('/signup',(req,res)=>{
     res.render('auth/signup');
 });
 
-/* router.post('/signup',(req,res)=>{
-    passport.autheticate('local.signup',{
-        successRedirect: '/profile',
-        failureRedirect: '/signup',
-        failureFlash: true
-    });
-    
-    res.send('received');
-}); */
-
 router.post('/signup', passport.authenticate('local.signup',{   
         successRedirect: '/profile',
         failureRedirect: '/signup',
         failureFlash: true
 }));
 
+router.get('/signin',(req,res)=>{
+    res.render('auth/signin');
+});
+
+router.post('/signin',(req,res,next)=>{
+    passport.authenticate('local.signin',{
+        successRedirect: '/profile',
+        failureRedirect: '/signin',
+        dailireFlash: true
+    })(req,res,next);
+})
 
 router.get('/profile',(req,res)=>{
     res.send('this is you profile');
